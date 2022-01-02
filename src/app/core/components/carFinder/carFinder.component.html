@@ -1,0 +1,849 @@
+<div class="mainContainer sombra">
+<b>Numero de chasis / VIM Number</b>
+<input [(ngModel)]="vim"  type="text" value="2HGFA16537H507451" placeholder="VIM NUM." class="entrada">
+<b class="entrada">Año</b>
+<input [(ngModel)]="year" type="text" value="2007" placeholder="ej: 2007" class="entrada">
+<input (click)="loadInfo()" class="entrada" value="Consultar" type="button">
+</div>
+<br>
+
+<div class="mainContainer" *ngIf="errorCode!='0'&& errorCode!='' ">
+  {{errorMessage}}
+</div>
+
+<div *ngIf="carInfo.Count==0">
+<img class="placeholderImg" width="200px" src="../../../../assets/lookp.svg">
+</div>
+
+
+
+<div class="mainContainer" *ngIf="carInfo.Count>0 && errorCode=='0'">
+<b>Resultados de la consulta</b>
+<br>
+<small>{{carInfo.Message}}</small>
+<br>
+
+<small>{{carInfo.SearchCriteria}}</small>
+<br>
+<table id="resultados" class="tabla" *ngFor="let item of carInfo.Results">
+  <tr>
+    <th>Propiedad</th>
+    <th>Resultado</th>
+  </tr>
+<tr>
+  <td>Marca</td>
+  <td>{{item.Make}}</td>
+</tr>
+<tr>
+  <td>Modelo</td>
+  <td>{{item.Model}}</td>
+</tr>
+<tr>
+  <td>Año</td>
+  <td>{{item.ModelYear}}</td>
+</tr>
+<tr>
+  <td>Tipo de combustible</td>
+  <td>{{item.FuelTypePrimary}}</td>
+</tr>
+<tr>
+  <td>Fabricante</td>
+  <td>{{item.Manufacturer}}</td>
+</tr>
+<tr>
+  <td>Velocidades/Cambios</td>
+  <td>{{item.TransmissionSpeeds}}</td>
+</tr>
+<tr>
+  <td>Tipo de vehiculo</td>
+  <td>{{item.VehicleType}}</td>
+</tr>
+</table>
+<br>
+<h2>REPORTE COMPLETO</h2>
+<br>
+
+
+
+
+
+
+<table class="tabla" *ngFor="let item of carInfo.Results">
+  <tr>
+    <th>Propiedad</th>
+    <th>Resultado</th>
+  </tr>
+<tr>
+  <td>ABS</td>
+  <td>{{item.ABS}}</td>
+</tr>
+<tr>
+  <td>ActiveSafetySysNote</td>
+  <td>{{item.ActiveSafetySysNote}}</td>
+</tr>
+<tr>
+  <td>AdaptiveCruiseControl</td>
+  <td>{{item.AdaptiveCruiseControl}}</td>
+</tr>
+<tr>
+  <td>AdaptiveDrivingBeam</td>
+  <td>{{item.AdaptiveDrivingBeam}}</td>
+</tr>
+<tr>
+  <td>AdaptiveHeadlights</td>
+  <td>{{item.AdaptiveHeadlights}}</td>
+</tr>
+<tr>
+  <td>AdditionalErrorText</td>
+  <td>{{item.AdditionalErrorText}}</td>
+</tr>
+<tr>
+  <td>AirBagLocCurtain</td>
+  <td>{{item.AirBagLocCurtain}}</td>
+</tr>
+<tr>
+  <td>AirBagLocFront</td>
+  <td>{{item.AirBagLocFront}}</td>
+</tr>
+<tr>
+  <td>AirBagLocKnee</td>
+  <td>{{item.AirBagLocKnee}}</td>
+</tr>
+<tr>
+  <td>AirBagLocSeatCushion</td>
+  <td>{{item.AirBagLocSeatCushion}}</td>
+</tr>
+<tr>
+  <td>AirBagLocSide</td>
+  <td>{{item.AirBagLocSide}}</td>
+</tr>
+<tr>
+  <td>AutoReverseSystem</td>
+  <td>{{item.AutoReverseSystem}}</td>
+</tr>
+<tr>
+  <td>PedestrianAlertingSound</td>
+  <td>{{item.AutomaticPedestrianAlertingSound}}</td>
+</tr>
+<tr>
+  <td>AxleConfiguration</td>
+  <td>{{item.AxleConfiguration}}</td>
+</tr>
+<tr>
+  <td>Axles</td>
+  <td>{{item.Axles}}</td>
+</tr>
+<tr>
+  <td>BasePrice</td>
+  <td>{{item.BasePrice}}</td>
+</tr>
+<tr>
+  <td>BatteryA</td>
+  <td>{{item.BatteryA}}</td>
+</tr>
+<tr>
+  <td>BatteryA_to</td>
+  <td>{{item.BatteryA_to}}</td>
+</tr>
+<tr>
+  <td>BatteryCells</td>
+  <td>{{item.BatteryCells}}</td>
+</tr>
+<tr>
+  <td>BatteryInfo</td>
+  <td>{{item.BatteryInfo}}</td>
+</tr>
+<tr>
+  <td>BatteryKWh</td>
+  <td>{{item.BatteryKWh}}</td>
+</tr>
+<tr>
+  <td>BatteryModules</td>
+  <td>{{item.BatteryModules}}</td>
+</tr>
+<tr>
+  <td>BatteryPacks</td>
+  <td>{{item.BatteryPacks}}</td>
+</tr>
+<tr>
+  <td>BatteryType</td>
+  <td>{{item.BatteryType}}</td>
+</tr>
+<tr>
+  <td>BatteryV</td>
+  <td>{{item.BatteryV}}</td>
+</tr>
+<tr>
+  <td>BatteryV_to</td>
+  <td>{{item.BatteryV_to}}</td>
+</tr>
+<tr>
+  <td>BedLengthIN</td>
+  <td>{{item.BedLengthIN}}</td>
+</tr>
+<tr>
+  <td>BedType</td>
+  <td>{{item.BedType}}</td>
+</tr>
+
+
+
+
+
+
+
+<tr>
+  <td>BlindSpotIntervention</td>
+  <td>{{item.BlindSpotIntervention}}</td>
+</tr>
+<tr>
+  <td>BlindSpotMon</td>
+  <td>{{item.BlindSpotMon}}</td>
+</tr>
+<tr>
+  <td>BodyCabType</td>
+  <td>{{item.BodyCabType}}</td>
+</tr>
+<tr>
+  <td>BodyClass</td>
+  <td>{{item.BodyClass}}</td>
+</tr>
+<tr>
+  <td>BrakeSystemDesc</td>
+  <td>{{item.BrakeSystemDesc}}</td>
+</tr>
+<tr>
+  <td>BrakeSystemType</td>
+  <td>{{item.BrakeSystemType}}</td>
+</tr>
+<tr>
+  <td>BusFloorConfigType</td>
+  <td>{{item.BusFloorConfigType}}</td>
+</tr>
+
+
+
+
+
+
+
+<tr>
+  <td>BusLength</td>
+  <td>{{item.BusLength}}</td>
+</tr>
+<tr>
+  <td>BusType</td>
+  <td>{{item.BusType}}</td>
+</tr>
+<tr>
+  <td>CAN_AACN</td>
+  <td>{{item.CAN_AACN}}</td>
+</tr>
+<tr>
+  <td>CIB</td>
+  <td>{{item.CIB}}</td>
+</tr>
+<tr>
+  <td>CashForClunkers</td>
+  <td>{{item.CashForClunkers}}</td>
+</tr>
+<tr>
+  <td>ChargerLevel</td>
+  <td>{{item.ChargerLevel}}</td>
+</tr>
+<tr>
+  <td>ChargerPowerKW</td>
+  <td>{{item.ChargerPowerKW}}</td>
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+  <td>CoolingType</td>
+  <td>{{item.CoolingType}}</td>
+</tr>
+<tr>
+  <td>CurbWeightLB</td>
+  <td>{{item.CurbWeightLB}}</td>
+</tr>
+<tr>
+  <td>CustomMotorcycleType</td>
+  <td>{{item.CustomMotorcycleType}}</td>
+</tr>
+<tr>
+  <td>DaytimeRunningLight</td>
+  <td>{{item.DaytimeRunningLight}}</td>
+</tr>
+<tr>
+  <td>DestinationMarket</td>
+  <td>{{item.DestinationMarket}}</td>
+</tr>
+<tr>
+  <td>DisplacementCC</td>
+  <td>{{item.DisplacementCC}}</td>
+</tr>
+<tr>
+  <td>DisplacementCI</td>
+  <td>{{item.DisplacementCI}}</td>
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+  <td>DisplacementL</td>
+  <td>{{item.DisplacementL}}</td>
+</tr>
+<tr>
+  <td>Doors</td>
+  <td>{{item.Doors}}</td>
+</tr>
+<tr>
+  <td>DriveType</td>
+  <td>{{item.DriveType}}</td>
+</tr>
+<tr>
+  <td>DriverAssist</td>
+  <td>{{item.DriverAssist}}</td>
+</tr>
+<tr>
+  <td>DynamicBrakeSupport</td>
+  <td>{{item.DynamicBrakeSupport}}</td>
+</tr>
+<tr>
+  <td>EDR</td>
+  <td>{{item.EDR}}</td>
+</tr>
+<tr>
+  <td>ESC</td>
+  <td>{{item.ESC}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>EVDriveUnit</td>
+  <td>{{item.EVDriveUnit}}</td>
+</tr>
+<tr>
+  <td>ElectrificationLevel</td>
+  <td>{{item.ElectrificationLevel}}</td>
+</tr>
+<tr>
+  <td>EngineConfiguration</td>
+  <td>{{item.EngineConfiguration}}</td>
+</tr>
+<tr>
+  <td>EngineCycles</td>
+  <td>{{item.EngineCycles}}</td>
+</tr>
+<tr>
+  <td>EngineCylinders</td>
+  <td>{{item.EngineCylinders}}</td>
+</tr>
+<tr>
+  <td>EngineHP</td>
+  <td>{{item.EngineHP}}</td>
+</tr>
+<tr>
+  <td>EngineHP_to</td>
+  <td>{{item.EngineHP_to}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>EngineKW</td>
+  <td>{{item.EngineKW}}</td>
+</tr>
+<tr>
+  <td>EngineManufacturer</td>
+  <td>{{item.EngineManufacturer}}</td>
+</tr>
+<tr>
+  <td>EngineModel</td>
+  <td>{{item.EngineModel}}</td>
+</tr>
+<tr>
+  <td>EntertainmentSystem</td>
+  <td>{{item.EntertainmentSystem}}</td>
+</tr>
+<tr>
+  <td>ErrorCode</td>
+  <td>{{item.ErrorCode}}</td>
+</tr>
+<tr>
+  <td>ErrorText</td>
+  <td>{{item.ErrorText}}</td>
+</tr>
+<tr>
+  <td>ForwardCollisionWarning</td>
+  <td>{{item.ForwardCollisionWarning}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>FuelInjectionType</td>
+  <td>{{item.FuelInjectionType}}</td>
+</tr>
+<tr>
+  <td>FuelTypePrimary</td>
+  <td>{{item.FuelTypePrimary}}</td>
+</tr>
+<tr>
+  <td>FuelTypeSecondary</td>
+  <td>{{item.FuelTypeSecondary}}</td>
+</tr>
+<tr>
+  <td>GCWR</td>
+  <td>{{item.GCWR}}</td>
+</tr>
+<tr>
+  <td>GCWR_to</td>
+  <td>{{item.GCWR_to}}</td>
+</tr>
+<tr>
+  <td>GVWR</td>
+  <td>{{item.GVWR}}</td>
+</tr>
+<tr>
+  <td>GVWR_to</td>
+  <td>{{item.GVWR_to}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>KeylessIgnition</td>
+  <td>{{item.KeylessIgnition}}</td>
+</tr>
+<tr>
+  <td>LaneCenteringAssistance</td>
+  <td>{{item.LaneCenteringAssistance}}</td>
+</tr>
+<tr>
+  <td>LaneDepartureWarning</td>
+  <td>{{item.LaneDepartureWarning}}</td>
+</tr>
+<tr>
+  <td>LaneKeepSystem</td>
+  <td>{{item.LaneKeepSystem}}</td>
+</tr>
+<tr>
+  <td>LowerBeamHeadlampLightSource</td>
+  <td>{{item.LowerBeamHeadlampLightSource}}</td>
+</tr>
+<tr>
+  <td>Make</td>
+  <td>{{item.Make}}</td>
+</tr>
+<tr>
+  <td>MakeID</td>
+  <td>{{item.MakeID}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>Manufacturer</td>
+  <td>{{item.Manufacturer}}</td>
+</tr>
+<tr>
+  <td>ManufacturerId</td>
+  <td>{{item.ManufacturerId}}</td>
+</tr>
+<tr>
+  <td>Model</td>
+  <td>{{item.Model}}</td>
+</tr>
+<tr>
+  <td>ModelID</td>
+  <td>{{item.ModelID}}</td>
+</tr>
+<tr>
+  <td>ModelYear</td>
+  <td>{{item.ModelYear}}</td>
+</tr>
+<tr>
+  <td>MotorcycleChassisType</td>
+  <td>{{item.MotorcycleChassisType}}</td>
+</tr>
+<tr>
+  <td>MotorcycleSuspensionType</td>
+  <td>{{item.MotorcycleSuspensionType}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>NCSABodyType</td>
+  <td>{{item.NCSABodyType}}</td>
+</tr>
+<tr>
+  <td>NCSAMake</td>
+  <td>{{item.NCSAMake}}</td>
+</tr>
+<tr>
+  <td>NCSAMapExcApprovedBy</td>
+  <td>{{item.NCSAMapExcApprovedBy}}</td>
+</tr>
+<tr>
+  <td>NCSAMapExcApprovedOn</td>
+  <td>{{item.NCSAMapExcApprovedOn}}</td>
+</tr>
+<tr>
+  <td>NCSAMappingException</td>
+  <td>{{item.NCSAMappingException}}</td>
+</tr>
+<tr>
+  <td>NCSAModel</td>
+  <td>{{item.NCSAModel}}</td>
+</tr>
+<tr>
+  <td>NCSANote</td>
+  <td>{{item.NCSANote}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>Note</td>
+  <td>{{item.Note}}</td>
+</tr>
+<tr>
+  <td>OtherBusInfo</td>
+  <td>{{item.OtherBusInfo}}</td>
+</tr>
+<tr>
+  <td>OtherEngineInfo</td>
+  <td>{{item.OtherEngineInfo}}</td>
+</tr>
+<tr>
+  <td>OtherMotorcycleInfo</td>
+  <td>{{item.OtherMotorcycleInfo}}</td>
+</tr>
+<tr>
+  <td>OtherRestraintSystemInfo</td>
+  <td>{{item.OtherRestraintSystemInfo}}</td>
+</tr>
+<tr>
+  <td>OtherTrailerInfo</td>
+  <td>{{item.OtherTrailerInfo}}</td>
+</tr>
+<tr>
+  <td>ParkAssist</td>
+  <td>{{item.ParkAssist}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>PedestrianAutomaticEmergencyBraking</td>
+  <td>{{item.PedestrianAutomaticEmergencyBraking}}</td>
+</tr>
+<tr>
+  <td>PlantCity</td>
+  <td>{{item.PlantCity}}</td>
+</tr>
+<tr>
+  <td>PlantCompanyName</td>
+  <td>{{item.PlantCompanyName}}</td>
+</tr>
+<tr>
+  <td>PlantCountry</td>
+  <td>{{item.PlantCountry}}</td>
+</tr>
+<tr>
+  <td>PlantState</td>
+  <td>{{item.PlantState}}</td>
+</tr>
+<tr>
+  <td>PossibleValues</td>
+  <td>{{item.PossibleValues}}</td>
+</tr>
+<tr>
+  <td>Pretensioner</td>
+  <td>{{item.Pretensioner}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>RearAutomaticEmergencyBraking</td>
+  <td>{{item.RearAutomaticEmergencyBraking}}</td>
+</tr>
+<tr>
+  <td>RearCrossTrafficAlert</td>
+  <td>{{item.RearCrossTrafficAlert}}</td>
+</tr>
+<tr>
+  <td>RearVisibilitySystem</td>
+  <td>{{item.RearVisibilitySystem}}</td>
+</tr>
+<tr>
+  <td>SAEAutomationLevel</td>
+  <td>{{item.SAEAutomationLevel}}</td>
+</tr>
+<tr>
+  <td>SAEAutomationLevel_to</td>
+  <td>{{item.SAEAutomationLevel_to}}</td>
+</tr>
+<tr>
+  <td>SeatBeltsAll</td>
+  <td>{{item.SeatBeltsAll}}</td>
+</tr>
+<tr>
+  <td>SeatRows</td>
+  <td>{{item.SeatRows}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>Seats</td>
+  <td>{{item.Seats}}</td>
+</tr>
+<tr>
+  <td>SemiautomaticHeadlampBeamSwitching</td>
+  <td>{{item.SemiautomaticHeadlampBeamSwitching}}</td>
+</tr>
+<tr>
+  <td>Series</td>
+  <td>{{item.Series}}</td>
+</tr>
+<tr>
+  <td>Series2</td>
+  <td>{{item.Series2}}</td>
+</tr>
+<tr>
+  <td>SteeringLocation</td>
+  <td>{{item.SteeringLocation}}</td>
+</tr>
+<tr>
+  <td>SuggestedVIN</td>
+  <td>{{item.SuggestedVIN}}</td>
+</tr>
+<tr>
+  <td>TPMS</td>
+  <td>{{item.TPMS}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>TopSpeedMPH</td>
+  <td>{{item.TopSpeedMPH}}</td>
+</tr>
+<tr>
+  <td>TrackWidth</td>
+  <td>{{item.TrackWidth}}</td>
+</tr>
+<tr>
+  <td>TractionControl</td>
+  <td>{{item.TractionControl}}</td>
+</tr>
+<tr>
+  <td>TrailerBodyType</td>
+  <td>{{item.TrailerBodyType}}</td>
+</tr>
+<tr>
+  <td>TrailerLength</td>
+  <td>{{item.TrailerLength}}</td>
+</tr>
+<tr>
+  <td>TrailerType</td>
+  <td>{{item.TrailerType}}</td>
+</tr>
+<tr>
+  <td>TransmissionSpeeds</td>
+  <td>{{item.TransmissionSpeeds}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>TransmissionStyle</td>
+  <td>{{item.TransmissionStyle}}</td>
+</tr>
+<tr>
+  <td>Trim</td>
+  <td>{{item.Trim}}</td>
+</tr>
+<tr>
+  <td>Trim2</td>
+  <td>{{item.Trim2}}</td>
+</tr>
+<tr>
+  <td>Turbo</td>
+  <td>{{item.Turbo}}</td>
+</tr>
+<tr>
+  <td>VIN</td>
+  <td>{{item.VIN}}</td>
+</tr>
+<tr>
+  <td>ValveTrainDesign</td>
+  <td>{{item.ValveTrainDesign}}</td>
+</tr>
+<tr>
+  <td>VehicleType</td>
+  <td>{{item.VehicleType}}</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>WheelBaseLong</td>
+  <td>{{item.WheelBaseLong}}</td>
+</tr>
+<tr>
+  <td>WheelBaseShort</td>
+  <td>{{item.WheelBaseShort}}</td>
+</tr>
+<tr>
+  <td>WheelBaseType</td>
+  <td>{{item.WheelBaseType}}</td>
+</tr>
+<tr>
+  <td>WheelSizeFront</td>
+  <td>{{item.WheelSizeFront}}</td>
+</tr>
+<tr>
+  <td>WheelSizeRear</td>
+  <td>{{item.WheelSizeRear}}</td>
+</tr>
+<tr>
+  <td>Wheels</td>
+  <td>{{item.Wheels}}</td>
+</tr>
+<tr>
+  <td>Windows</td>
+  <td>{{item.Windows}}</td>
+</tr>
+</table>
+</div>
